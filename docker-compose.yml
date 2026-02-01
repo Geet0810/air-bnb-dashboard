@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  airbnb-dashboard:
+    build: .
+    container_name: airbnb-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./dashboard.py:/app/dashboard.py
+      - ./utils:/app/utils
+      - ./.streamlit:/app/.streamlit
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
